@@ -9,26 +9,32 @@
 
 English | [简体中文](./README-CN.md)
 
-Motrix is a full-featured download manager that support downloading HTTP, FTP, BitTorrent, Magnet, Baidu Net Disk etc.
+Motrix is a full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, Baidu Net Disk, etc.
 
-It has a clean and simple interface and is easy to use. I hope you will like it 👻.
+Motrix has a clean and easy to use interface. I hope you will like it 👻.
 
 ✈️ [Official Website](https://motrix.app) | 📖 [Manual](http://motrix.app/support/issues) (zh-CN)
 
 ## 💽 Installation
 Download from [GitHub Releases](https://github.com/agalwood/Motrix/releases) and install it.
 
+Update: macOS user support `brew cask` installation, thanks to [PR](https://github.com/Homebrew/homebrew-cask/pull/59494) of [Mitscherlich](https://github.com/Mitscherlich).
+
+```bash
+brew update && brew cask install motrix
+```
+
 ## ✨ Features
 - 🕹 Simple and clear user interface
-- 🧲 Support BitTorrent & Magnet
-- 🤫 Support downloading Baidu Net Disk
-- 🎛 Up to 10 tasks concurrently download
-- 🚀 Single task maximum support 64 thread download
+- 🦄 Supports BitTorrent & Magnet
+- 💾 Supports downloading Baidu Net Disk
+- 🎛 Up to 10 concurrent download tasks
+- 🚀 Supports 64 threads in a single task
 - 🕶 Mock User-Agent
 - 🔔 Download completed Notification
 - 💻 Ready for Touch Bar (Mac only)
 - 🗑 Delete related files when removing tasks (optional)
-- 🌍 I18n, currently available Simplified Chinese & English.
+- 🌍 I18n, [View supported languages](#-internationalization).
 - 🎏 ...
 
 ## 🖥 User Interface
@@ -57,7 +63,7 @@ npm run dev
 ```bash
 npm run build
 ```
-After build finish, you can see the compiled packaged application file in the `release` directory of the project.
+After building, the application will be found in the project's `release` directory.
 
 ## 🛠 Technology Stack
 - [Electron](https://electronjs.org/)
@@ -68,7 +74,18 @@ After build finish, you can see the compiled packaged application file in the `r
 Development Roadmap see: [Trello](https://trello.com/b/qNUzA0bv/motrix)
 
 ## 🤝 Contribute [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-If you are interested in participating in joint development, Fork and PR are welcome.
+If you are interested in participating in joint development, PR and Forks are welcome!
+
+## 🌍 Internationalization
+Translations into versions for other languages are welcome 🧐! Please read the [translation guide](./CONTRIBUTING.md#-translation-guide) before starting translations.
+
+| Key   | Name            | Status       |
+|-------|:----------------|:-------------|
+| en-US | English         | ✔️           |
+| fr    | Français        | Next Release [@gpatarin](https://github.com/gpatarin) |
+| tr    | Türkçe          | Next Release [@abdullah](https://github.com/abdullah) |
+| zh-CN | 简体中文         | ✔️           |
+| zh-TW | 繁體中文         | Next Release [@Yukaii](https://github.com/Yukaii) |
 
 ## 📜 License
 [MIT](https://opensource.org/licenses/MIT) Copyright (c) 2018-present Dr_rOot

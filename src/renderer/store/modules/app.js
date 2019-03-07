@@ -12,6 +12,7 @@ const state = {
     version: '',
     enabledFeatures: []
   },
+  engineOptions: {},
   interval: BASE_INTERVAL,
   stat: {
     downloadSpeed: 0,
@@ -21,7 +22,8 @@ const state = {
     numWaiting: 0
   },
   addTaskVisible: false,
-  addTaskType: 'uri'
+  addTaskType: 'uri',
+  addTaskTorrents: []
 }
 
 const getters = {
@@ -34,6 +36,9 @@ const mutations = {
   UPDATE_ENGINE_INFO (state, engineInfo) {
     state.engineInfo = { ...state.engineInfo, ...engineInfo }
   },
+  UPDATE_ENGINE_OPTIONS (state, engineOptions) {
+    state.engineOptions = { ...state.engineOptions, ...engineOptions }
+  },
   UPDATE_GLOBAL_STAT (state, stat) {
     state.stat = stat
   },
@@ -42,6 +47,9 @@ const mutations = {
   },
   CHANGE_ADD_TASK_TYPE (state, taskType) {
     state.addTaskType = taskType
+  },
+  CHANGE_ADD_TASK_TORRENTS (state, fileList) {
+    state.addTaskTorrents = [...fileList]
   },
   UPDATE_INTERVAL (state, millisecond) {
     let interval = millisecond
@@ -80,6 +88,15 @@ const actions = {
       .then((data) => {
         commit('UPDATE_ENGINE_INFO', data)
       })
+  },
+  fetchEngineOptions ({ commit }) {
+    return new Promise((resolve) => {
+      api.getGlobalOption()
+        .then((data) => {
+          commit('UPDATE_ENGINE_OPTIONS', data)
+          resolve(data)
+        })
+    })
   },
   fetchGlobalStat ({ commit, dispatch }) {
     api.getGlobalStat()
@@ -121,9 +138,13 @@ const actions = {
   },
   hideAddTaskDialog ({ commit }) {
     commit('CHANGE_ADD_TASK_VISIBLE', false)
+    commit('CHANGE_ADD_TASK_TORRENTS', [])
   },
   changeAddTaskType ({ commit }, taskType) {
     commit('CHANGE_ADD_TASK_TYPE', taskType)
+  },
+  addTaskAddTorrents ({ commit }, { fileList }) {
+    commit('CHANGE_ADD_TASK_TORRENTS', fileList)
   },
   updateInterval ({ commit }, millisecond) {
     commit('UPDATE_INTERVAL', millisecond)
